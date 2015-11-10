@@ -5,6 +5,17 @@ helpers do
 end
 
 get '/' do
+
+
+
+  current_user.songs.find(params[:song_id])
+  upvotes = Upvote.where(user_id: current_user.id, song_id: song_id)
+
+
+
+
+
+
   erb :index
 end
 
@@ -23,7 +34,10 @@ end
 
 post '/login' do
   user = User.find_by(username: params[:username])
-  if user && user.password == params[:password]
+  logged_in = user.authenticate(params[:password])
+
+  if logged_in
+    session[:user] = @user.id
     redirect '/'
   else
     @error = 'invalid username or password'

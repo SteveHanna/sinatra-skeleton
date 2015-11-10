@@ -1,7 +1,7 @@
 <h1>Login</h1>
 
 <form action="/login" method="POST">
-  <p><%= @error.to_s %><p>
+  <p><%= "this is an error": + @error %><p>
   username : <input name="username" type="text" /> <br/>
   password : <input name="password" type="text" /> <br/>
   <input type="submit" value="Submit" />
