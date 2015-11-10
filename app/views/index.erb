@@ -1,1 +1,12 @@
 <h1>Home Page</h1>
+<% if current_user %>
+  <%= "Welcome #{current_user.username}"%>
+
+  <ul>
+    <% current_user.messages.each do |message| %>
+      <li><%= message.message %></li>
+    <% end %>
+  </ul>
+<% else %>
+  Login to see your messages
+<% end %>
